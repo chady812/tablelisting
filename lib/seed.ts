@@ -1,0 +1,163 @@
+import type { Client, Owner } from "@/lib/types";
+
+/** Fixed UUIDs so seeded rows are stable and deduplicated across reloads. */
+const ID = (n: number): string =>
+  `00000000-0000-4000-8000-${String(n).padStart(12, "0")}`;
+
+const daysAgo = (days: number): string =>
+  new Date(Date.now() - days * 86_400_000).toISOString();
+
+/**
+ * First-run sample rows for local (no Supabase) mode. Written into
+ * `localStorage` the first time the store is read, then never again — the user
+ * is free to edit or delete them.
+ */
+export const SEED_OWNERS: Owner[] = [
+  {
+    id: ID(1),
+    property_name: "Sunset Loft 4B",
+    owner_name: "Jane Doe",
+    phone: "+1 555 0134",
+    price: 2400,
+    location: "Brooklyn, NY",
+    status: "available",
+    notes: "Doorman building, bikes in basement",
+    created_at: daysAgo(2),
+    updated_at: daysAgo(2),
+  },
+  {
+    id: ID(2),
+    property_name: "Maple Court 12A",
+    owner_name: "Omar Haddad",
+    phone: "+1 555 0192",
+    price: 3100,
+    location: "Queens, NY",
+    status: "rented",
+    notes: null,
+    created_at: daysAgo(9),
+    updated_at: daysAgo(4),
+  },
+  {
+    id: ID(3),
+    property_name: "Harbor View 7C",
+    owner_name: "Priya Nair",
+    phone: "+1 555 0177",
+    price: 4500,
+    location: "Hoboken, NJ",
+    status: "pending",
+    notes: "Lease renewal due next month",
+    created_at: daysAgo(14),
+    updated_at: daysAgo(1),
+  },
+  {
+    id: ID(4),
+    property_name: "Elm Street Studio",
+    owner_name: "Tom Whitfield",
+    phone: "+1 555 0110",
+    price: 1750,
+    location: "Bronx, NY",
+    status: "available",
+    notes: null,
+    created_at: daysAgo(21),
+    updated_at: daysAgo(21),
+  },
+  {
+    id: ID(5),
+    property_name: "Riverside Duplex",
+    owner_name: "Ana Beltrán",
+    phone: "+1 555 0166",
+    price: 5200,
+    location: "Jersey City, NJ",
+    status: "rented",
+    notes: null,
+    created_at: daysAgo(33),
+    updated_at: daysAgo(12),
+  },
+  {
+    id: ID(6),
+    property_name: "Oak Terrace 3D",
+    owner_name: "Kenji Mori",
+    phone: "+1 555 0148",
+    price: 2900,
+    location: "Brooklyn, NY",
+    status: "pending",
+    notes: "Waiting on proof of funds",
+    created_at: daysAgo(41),
+    updated_at: daysAgo(3),
+  },
+];
+
+export const SEED_CLIENTS: Client[] = [
+  {
+    id: ID(101),
+    client_name: "Marcus Reid",
+    phone: "+1 555 0188",
+    budget: 3000,
+    preferences: "2 bed, high floor, doorman",
+    desired_location: "Williamsburg",
+    status: "looking",
+    notes: null,
+    created_at: daysAgo(1),
+    updated_at: daysAgo(1),
+  },
+  {
+    id: ID(102),
+    client_name: "Sofia Alvarez",
+    phone: "+1 555 0121",
+    budget: 4200,
+    preferences: "Pet friendly, in-unit laundry",
+    desired_location: "Upper West Side",
+    status: "matched",
+    notes: "Viewing scheduled Friday",
+    created_at: daysAgo(5),
+    updated_at: daysAgo(2),
+  },
+  {
+    id: ID(103),
+    client_name: "Daniel Osei",
+    phone: "+1 555 0155",
+    budget: 1800,
+    preferences: "Studio, near the L train",
+    desired_location: "Bushwick",
+    status: "looking",
+    notes: null,
+    created_at: daysAgo(8),
+    updated_at: daysAgo(8),
+  },
+  {
+    id: ID(104),
+    client_name: "Lena Fischer",
+    phone: "+1 555 0102",
+    budget: 6500,
+    preferences: "3 bed, parking, terrace",
+    desired_location: "Tribeca",
+    status: "closed",
+    notes: "Signed 12-month lease",
+    created_at: daysAgo(26),
+    updated_at: daysAgo(6),
+  },
+  {
+    id: ID(105),
+    client_name: "Ryan Callahan",
+    phone: "+1 555 0139",
+    budget: 2500,
+    preferences: "1 bed, quiet street",
+    desired_location: "Astoria",
+    status: "matched",
+    notes: null,
+    created_at: daysAgo(17),
+    updated_at: daysAgo(7),
+  },
+  {
+    id: ID(106),
+    client_name: "Amira Yusuf",
+    phone: "+1 555 0173",
+    budget: 3400,
+    preferences: "Balcony, laundry in unit",
+    desired_location: "Long Island City",
+    status: "looking",
+    notes: null,
+    created_at: daysAgo(11),
+    updated_at: daysAgo(11),
+  },
+];
